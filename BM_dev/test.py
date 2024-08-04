@@ -19,13 +19,25 @@ COORDS = [
     (684, 560),  # location 14
     (0, 640),  # location 15
     (798, 640),  # location 16
+    (78, 601),  # location 16
+    (83, 60),  # location 16
+    (57, 304),  # location 16
+    (62, 157),  # location 16
+    (79, 312),  # location 16
+    (92, 67),  # location 16
+    (140, 40),  # location 16
+    (287, 99),  # location 16
+    (311, 278),  # location 16
+    (123, 412),  # location 16
+    (266, 442),  # location 16
+    (348, 290),  # location 27
 ]
 
 m = Model()
 
 
 depot_k = m.add_depot(x=COORDS[0][0], y=COORDS[0][1])
-m.add_vehicle_type(num_available=8, capacity=2, depot=depot_k)
+m.add_vehicle_type(num_available=13, capacity=3, depot=depot_k)
 
 clients = [
     m.add_client(x=COORDS[idx][0], y=COORDS[idx][1], delivery=1)
@@ -38,7 +50,7 @@ for frm_idx, frm in enumerate(m.locations):
         m.add_edge(frm, to, distance=distance)
 
 res = m.solve(
-    stop=MaxIterations(10000), seed=42, display=True, collect_stats=True
+    stop=MaxIterations(2000), seed=42, display=True, collect_stats=True
 )
 
 print(res)
